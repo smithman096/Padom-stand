@@ -1,1 +1,0 @@
-# Padom-stand
