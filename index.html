@@ -49,7 +49,6 @@
   const rowLabels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".slice(0, 25); // A–Y
   const rowCount = 20;
 
-  // ✅ รายชื่อเจ้ดำ (รวมที่เพิ่มล่าสุด)
   const jaodumSeats = [
     "C9", "C10", "C11", "C12", "C13", "C14", "C15", "C16", "D15", "D16",
     "E9", "E10", "F4", "F9", "F13", "G4", "G6", "G7", "G9", "G13",
@@ -60,7 +59,16 @@
     "R4", "R7", "S4", "S7", "S9", "S10", "S11", "T4", "T5", "T6", "T7", "T9", "U9",
     "V9", "W9", "W10", "W11", "W12", "W13", "W14", "W15", "W16"
   ];
-  
+
+  const totalSeats = rowLabels.length * rowCount;
+  const countActive = jaodumSeats.length;
+  const countInactive = totalSeats - countActive;
+
+  // แสดงผลลัพธ์จำนวนในหน้าเว็บ
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("countActive").textContent = countActive;
+    document.getElementById("countInactive").textContent = countInactive;
+  });
 
   const table = document.getElementById("seatTable");
 
@@ -83,13 +91,13 @@
     tr += "</tr>";
     table.innerHTML += tr;
   }
-  
 </script>
 <div style="display: flex; justify-content: center; align-items: center; margin-top: 30px; gap: 40px;">
   <p style="font-size: 26px; line-height: 2; margin: 0;">
     <span style="font-size: 32px;">จำนวนเก้าอี้: <strong>500</strong></span><br>
-    <span style="font-size: 32px;">⚫ จำนวนเก้าอี้ : <strong>97</strong></span><br>
-    <span style="font-size: 32px;">⚪ จำนวนเก้าอี้ : <strong>403</strong></span>
+    <span style="font-size: 32px;">⚫ จำนวนเก้าอี้ : <strong id="countActive">0</strong></span><br>
+    <span style="font-size: 32px;">⚪ จำนวนเก้าอี้ : <strong id="countInactive">0</strong></span>
+
   </p>
 
   <!-- ✅ ใช้รูปที่อัปโหลด -->
